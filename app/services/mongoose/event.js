@@ -63,6 +63,8 @@ const createEvent = async (req) => {
 const getOneEventById = async (req) => {
   const { id } = req.params;
 
+  req.headers
+
   const result = Event.find({ _id: id });
 
   if (!result || result.length == 0) {
