@@ -59,22 +59,22 @@ const ticketCategoriesSchema = new Schema({
     image: {
       type: mongoose.Types.ObjectId,
       ref: "Image",
-      required: false,
+      required: [true, "Image is required"],
     },
     category: {
       type: mongoose.Types.ObjectId,
       ref: "Category",
-      required: false,
+      required: [true, "Category is required"],
     },
     talent: {
       type: mongoose.Types.ObjectId,
       ref: "Talent",
-      required: false,
+      required: [true, "Talent is required"],
     },
     organizer: {
       type: mongoose.Types.ObjectId,
       ref: "Organizer",
-      required: false,
+      required: [true, "Organizer is required"],
     },
   },
   {

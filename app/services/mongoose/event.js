@@ -37,6 +37,7 @@ const createEvent = async (req) => {
     image,
     category,
     talent,
+    organizer,
   } = req.body;
 
   const check = await Event.findOne({ title });
@@ -55,6 +56,7 @@ const createEvent = async (req) => {
     image,
     category,
     talent,
+    organizer
   });
 
   return result;
@@ -100,6 +102,7 @@ const updateEventById = async (req) => {
     image,
     category,
     talent,
+    organizer,
   } = req.body;
 
   // Get event based on id
@@ -134,6 +137,7 @@ const updateEventById = async (req) => {
         image,
         category,
         talent,
+        organizer,
     },
     {
         new: true,
