@@ -1,29 +1,30 @@
 const { model, Schema, default: mongoose } = require("mongoose");
 
 const ticketCategoriesSchema = new Schema({
-    type: {
-      type: String,
-      required: [true, "Ticket type is required"],
-    },
-    price: {
-      type: Number,
-      default: 0,
-    },
-    stock: {
-      type: Number,
-      default: 0,
-    },
-    statusTicketCategories: {
-      type: Boolean,
-      enum: [true, false],
-      default: true,
-    },
-    expired: {
-      type: Date,
-    },
-  });
+  type: {
+    type: String,
+    required: [true, "Ticket type is required"],
+  },
+  price: {
+    type: Number,
+    default: 0,
+  },
+  stock: {
+    type: Number,
+    default: 0,
+  },
+  statusTicketCategories: {
+    type: Boolean,
+    enum: [true, false],
+    default: true,
+  },
+  expired: {
+    type: Date,
+  },
+});
 
-  const EventSchema = Schema({
+const EventSchema = Schema(
+  {
     title: {
       type: String,
       required: [true, "Title is required"],
@@ -50,7 +51,7 @@ const ticketCategoriesSchema = new Schema({
     },
     statusEvent: {
       type: String,
-      required: [true, "Venue name is must be filled"]
+      required: [true, "Venue name is must be filled"],
     },
     tickets: {
       type: [ticketCategoriesSchema],
@@ -60,6 +61,10 @@ const ticketCategoriesSchema = new Schema({
       type: mongoose.Types.ObjectId,
       ref: "Image",
       required: [true, "Image is required"],
+    },
+    imageLink: {
+      type: String,
+      required: [true, "Image link is required"],
     },
     category: {
       type: mongoose.Types.ObjectId,
@@ -78,7 +83,22 @@ const ticketCategoriesSchema = new Schema({
     },
   },
   {
-      timestamps: true
-  });
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model("Event", EventSchema);
+const ImageSchema = new Schema({
+  filename: {
+    type: String,
+    required: [true, "name  is required"],
+  },
+  link: {
+    type: String,
+    required: [true, "name  is required"],
+  },
+});
+
+const Event = mongoose.model("Event", EventSchema);
+const Image = mongoose.model("Image", ImageSchema);
+
+module.exports = { Event, Image };

@@ -1,4 +1,5 @@
-const Event = require("../../api/v1/events/model");
+const { Event } = require("../../api/v1/events/model");
+
 
 const { NotFoundError, BadRequestError } = require("../../errors");
 
@@ -19,7 +20,7 @@ const getAllEvents = async (req) => {
     condition = { ...condition, talent: talent };
   }
 
-  const result = await Event.find(condition);
+  const result = await Event.find(condition)
 
   return result;
 };
@@ -35,6 +36,7 @@ const createEvent = async (req) => {
     statusEvent,
     tickets,
     image,
+    imageLink,
     category,
     talent,
     organizer,
@@ -54,6 +56,7 @@ const createEvent = async (req) => {
     statusEvent,
     tickets,
     image,
+    imageLink: imageLink,
     category,
     talent,
     organizer
@@ -100,6 +103,7 @@ const updateEventById = async (req) => {
     statusEvent,
     tickets,
     image,
+    imageLink,
     category,
     talent,
     organizer,
@@ -135,6 +139,7 @@ const updateEventById = async (req) => {
         statusEvent,
         tickets,
         image,
+        imageLink: imageLink,
         category,
         talent,
         organizer,
