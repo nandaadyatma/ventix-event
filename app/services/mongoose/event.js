@@ -82,6 +82,12 @@ const getOneEventById = async (req) => {
 const deleteEventById = async (req) => {
   const { id } = req.params;
 
+  const checkEvent = await Event.findOne({
+    _id: id,
+  });
+
+  if (!checkEvent) throw new NotFoundError(`There's no event with id :  ${id}`);
+
   const result = Event.findOneAndDelete({ _id: id });
 
   if (!result) {
