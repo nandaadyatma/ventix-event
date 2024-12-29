@@ -41,7 +41,7 @@ const getEventById = async (req, res, next) => {
     try {
         const result = await getOneEventById(req);
 
-        return res.status(StatusCodes.CREATED).json({
+        return res.status(StatusCodes.OK).json({
             error: false,
             message: "Get event successfully",
             data: result,
@@ -56,7 +56,7 @@ const deleteEvent = async (req, res, next) => {
     try {
         const result = await deleteEventById(req);
 
-        return res.status(StatusCodes.CREATED).json({
+        return res.status(StatusCodes.OK).json({
             error: false,
             message: "Delete event successfully",
             data: result,
@@ -72,7 +72,7 @@ const updateEvent = async (req, res, next) => {
     try {
         const result = await updateEventById(req)
 
-        return res.status(StatusCodes.CREATED).json({
+        return res.status(StatusCodes.OK).json({
             error: false,
             message: "Update event successfully",
             data: result,
