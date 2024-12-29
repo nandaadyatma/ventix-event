@@ -27,7 +27,7 @@ const getEvents = async (req, res, next) => {
     try {
         const result = await getAllEvents(req);
 
-        return res.status(StatusCodes.CREATED).json({
+        return res.status(StatusCodes.OK).json({
             error: false,
             message: "Get all events successfully",
             data: result,
